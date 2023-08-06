@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>ballcat</artifactId>
+		<groupId>com.hccake</groupId>
+		<version>1.4.0</version>
+		<relativePath/>
+	</parent>
+
+    <groupId>com.your.packages</groupId>
+    <artifactId>ballcat-boot</artifactId>
+    <version>${revision}</version>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>admin</module>
+	</modules>
+
+    <properties>
+		<revision>1.4.0</revision>
+		<java.version>1.8</java.version>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+	<!-- oss 快照私服 -->
+	<repositories>
+		<repository>
+			<id>oss-snapshots</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<build>
+		<!--重要 如果不设置resource 会导致application.yaml中的@@找不到pom文件中的配置-->
+		<resources>
+			<resource>
+				<filtering>true</filtering>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*.yml</include>
+					<include>**/*.yaml</include>
+					<include>logback-spring.xml</include>
+				</includes>
+			</resource>
+			<resource>
+				<filtering>false</filtering>
+				<directory>src/main/resources</directory>
+				<excludes>
+					<exclude>**/*.yml</exclude>
+					<exclude>**/*.yaml</exclude>
+					<exclude>logback-spring.xml</exclude>
+				</excludes>
+			</resource>
+		</resources>
+	</build>
+
+</project>

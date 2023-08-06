@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<artifactId>ballcat-boot</artifactId>
+		<groupId>com.your.packages</groupId>
+		<version>${revision}</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>admin</artifactId>
+
+	<properties>
+		<knife4j.version>3.0.3</knife4j.version>
+		<tianai-captcha.version>1.4.1</tianai-captcha.version>
+	</properties>
+
+	<dependencies>
+		<!-- 基于 spring authorization server 的授权服务器 -->
+		<dependency>
+			<groupId>com.hccake</groupId>
+			<artifactId>ballcat-spring-security-oauth2-authorization-server</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.hccake</groupId>
+			<artifactId>ballcat-admin-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.hccake</groupId>
+			<artifactId>ballcat-admin-websocket</artifactId>
+		</dependency>
+
+		<!--mysql驱动-->
+		<dependency>
+			<groupId>com.mysql</groupId>
+			<artifactId>mysql-connector-j</artifactId>
+		</dependency>
+
+		<!-- openapi 扩展处理 -->
+		<dependency>
+			<groupId>com.hccake</groupId>
+			<artifactId>ballcat-extend-openapi</artifactId>
+		</dependency>
+		<!-- springdoc swagger-ui -->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-security</artifactId>
+		</dependency>
+		<!-- swagger 增强版 ui -->
+		<dependency>
+			<groupId>com.github.xiaoymin</groupId>
+			<artifactId>knife4j-springdoc-ui</artifactId>
+			<version>${knife4j.version}</version>
+		</dependency>
+
+		<!-- tianai 图形验证码 -->
+		<dependency>
+			<groupId>cloud.tianai.captcha</groupId>
+			<artifactId>tianai-captcha-springboot-starter</artifactId>
+			<version>${tianai-captcha.version}</version>
+		</dependency>
+
+		<!-- API, java.xml.bind module -->
+		<!-- add it when jdk11 -->
+		<dependency>
+			<groupId>jakarta.xml.bind</groupId>
+			<artifactId>jakarta.xml.bind-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
